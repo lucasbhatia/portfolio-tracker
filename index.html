@@ -948,7 +948,7 @@
                     { date: 'Feb 10', text: 'iOS app beta released on TestFlight' }
                 ],
                 distribution: ['iOS App Store', 'Desktop (Web/Electron)', 'Railway'],
-                github: 'https://github.com/lucasbhatia/iostrade',
+                github: null,
                 liveUrl: null,
                 expectedLaunch: 'March 2026 (Live Trading)',
                 earlyAccess: 'lucas@iostrade.dev',
@@ -998,7 +998,7 @@
                     { date: 'Feb 10', text: 'Beta app released to TestFlight' }
                 ],
                 distribution: ['iOS App Store', 'Web (Vercel)', 'API'],
-                github: 'https://github.com/lucasbhatia/slipedge',
+                github: null,
                 liveUrl: 'https://slip-edge-web.vercel.app',
                 expectedLaunch: null,
                 earlyAccess: 'lucas@slipedge.dev',
@@ -1094,7 +1094,7 @@
                     { date: 'Feb 10', text: 'Project kickoff' }
                 ],
                 distribution: ['Chrome Web Store', 'Web (Vercel)'],
-                github: 'https://github.com/lucasbhatia/studybot',
+                github: null,
                 liveUrl: null,
                 expectedLaunch: 'March 2026 (Chrome Web Store)',
                 earlyAccess: 'lucas@studybot.dev',
@@ -1305,14 +1305,14 @@
                     }
                 </div>
 
-                <!-- Get Involved -->
+                <!-- Interested -->
                 <div class="get-involved">
-                    <h3 class="get-involved-title">🚀 Get Involved</h3>
+                    <h3 class="get-involved-title">💼 Interested?</h3>
                     <div class="involved-links">
                         ${project.liveUrl ? `<a href="${project.liveUrl}" class="involved-link" target="_blank">→ Try it Live</a>` : ''}
-                        ${project.github ? `<a href="${project.github}" class="involved-link" target="_blank">→ View on GitHub</a>` : ''}
-                        ${project.earlyAccess ? `<a href="mailto:${project.earlyAccess}" class="involved-link">→ Request Early Access</a>` : ''}
-                        <a href="${project.hire}" class="involved-link" target="_blank">→ Hire Lucas (Upwork)</a>
+                        ${project.earlyAccess ? `<a href="mailto:${project.earlyAccess}" class="involved-link">→ Get Early Access</a>` : ''}
+                        <a href="mailto:lucasbhatia@icloud.com" class="involved-link">→ Work with Me</a>
+                        <a href="https://linkedin.com/in/lucasbhatia" class="involved-link" target="_blank">→ Connect on LinkedIn</a>
                     </div>
                 </div>
             `;
