@@ -838,8 +838,8 @@
                     <div class="stat-label">Active Projects</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">76%</div>
-                    <div class="stat-label">Avg Completion</div>
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Tech Stacks</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">∞</div>
@@ -1121,15 +1121,7 @@
                         
                         <p class="project-description">${project.description}</p>
                         
-                        <div class="progress-section">
-                            <div class="progress-label">
-                                <span>Progress</span>
-                                <span class="progress-percentage">${project.progress}%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: ${project.progress}%"></div>
-                            </div>
-                        </div>
+                        <!-- progress removed -->
 
                         <div class="tech-stack">
                             ${project.tech.map(t => `<div class="tech-badge">${t}</div>`).join('')}
