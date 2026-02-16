@@ -1068,8 +1068,8 @@
                 <div class="footer-section">
                     <h3>More</h3>
                     <div class="footer-links">
+                        <a href="Lucas_Bhatia_Resume.pdf" class="footer-link" target="_blank">📄 Resume (PDF)</a>
                         <a href="https://www.uky.edu/academics/mathematical-economics" class="footer-link" target="_blank">UK Mathematical Economics</a>
-                        <a href="https://lucasbhatia.dev" class="footer-link" target="_blank">lucasbhatia.dev</a>
                     </div>
                 </div>
             </div>
@@ -1515,12 +1515,24 @@
         }
 
         // Initialize on load
-        window.addEventListener('DOMContentLoaded', function() {
+        function initialize() {
+            console.log('Initializing...');
             initProjects();
             generateQR();
             updateTimestamp();
-            loadPortfolioData();
-        });
+            loadPortfolioData().catch(e => {
+                console.warn('loadPortfolioData error:', e);
+            });
+        }
+
+        // Ensure initialization runs after DOM is ready
+        if (document.readyState !== 'loading') {
+            // DOM is already ready
+            setTimeout(initialize, 0);
+        } else {
+            // DOM is still loading
+            document.addEventListener('DOMContentLoaded', initialize);
+        }
 
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
