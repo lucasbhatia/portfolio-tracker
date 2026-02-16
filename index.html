@@ -1516,23 +1516,18 @@
 
         // Initialize on load
         function initialize() {
-            console.log('Initializing...');
             initProjects();
             generateQR();
             updateTimestamp();
+            // Load portfolio data asynchronously
             loadPortfolioData().catch(e => {
-                console.warn('loadPortfolioData error:', e);
+                console.log('Portfolio data failed to load (will use defaults):', e.message);
             });
         }
 
-        // Ensure initialization runs after DOM is ready
-        if (document.readyState !== 'loading') {
-            // DOM is already ready
-            setTimeout(initialize, 0);
-        } else {
-            // DOM is still loading
-            document.addEventListener('DOMContentLoaded', initialize);
-        }
+        // Run initialization right away (script is at end of body, so DOM is ready)
+        // Using setTimeout to defer to next event loop iteration
+        setTimeout(initialize, 0);
 
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
