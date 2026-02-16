@@ -949,6 +949,8 @@
                 ],
                 distribution: ['iOS App Store', 'Desktop (Web/Electron)', 'Railway'],
                 github: 'https://github.com/lucasbhatia/iostrade',
+                liveUrl: null,
+                expectedLaunch: 'March 2026 (Live Trading)',
                 earlyAccess: 'lucas@iostrade.dev',
                 hire: 'https://upwork.com/fl/lucasbhatia'
             },
@@ -997,6 +999,8 @@
                 ],
                 distribution: ['iOS App Store', 'Web (Vercel)', 'API'],
                 github: 'https://github.com/lucasbhatia/slipedge',
+                liveUrl: 'https://slip-edge-web.vercel.app',
+                expectedLaunch: null,
                 earlyAccess: 'lucas@slipedge.dev',
                 hire: 'https://upwork.com/fl/lucasbhatia'
             },
@@ -1044,6 +1048,8 @@
                 ],
                 distribution: ['Web (Vercel)', 'API'],
                 github: null,
+                liveUrl: null,
+                expectedLaunch: 'March 2026',
                 earlyAccess: null,
                 hire: 'https://upwork.com/fl/lucasbhatia'
             },
@@ -1089,6 +1095,8 @@
                 ],
                 distribution: ['Chrome Web Store', 'Web (Vercel)'],
                 github: 'https://github.com/lucasbhatia/studybot',
+                liveUrl: null,
+                expectedLaunch: 'March 2026 (Chrome Web Store)',
                 earlyAccess: 'lucas@studybot.dev',
                 hire: 'https://upwork.com/fl/lucasbhatia'
             },
@@ -1136,6 +1144,8 @@
                 ],
                 distribution: ['GitHub (Open Source)', 'npm', 'PyPI'],
                 github: 'https://github.com/lucasbhatia/agent-orchestration',
+                liveUrl: null,
+                expectedLaunch: 'Open Source — March 2026',
                 earlyAccess: 'lucas@agents.dev',
                 hire: 'https://upwork.com/fl/lucasbhatia'
             }
@@ -1182,7 +1192,10 @@
                     </div>
 
                     <div class="project-cta">
-                        <button class="btn btn-secondary" onclick="event.stopPropagation(); window.open('${project.github}')">View Code</button>
+                        ${project.liveUrl 
+                            ? `<button class="btn btn-secondary" onclick="event.stopPropagation(); window.open('${project.liveUrl}')" style="background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.3); color: #10b981;">🔗 Live Demo</button>`
+                            : `<button class="btn btn-secondary" onclick="event.stopPropagation(); openModal(${project.id})" style="opacity: 0.7;">🗓 Coming Soon</button>`
+                        }
                         <button class="btn btn-primary" onclick="event.stopPropagation(); openModal(${project.id})">Learn More</button>
                     </div>
                 </div>
@@ -1272,13 +1285,34 @@
                     </div>
                 </div>
 
+                <!-- Launch Status -->
+                <div style="margin-bottom: 32px; padding: 16px 20px; border-radius: 12px; background: ${project.liveUrl ? 'rgba(16,185,129,0.08)' : 'rgba(59,130,246,0.08)'}; border: 1px solid ${project.liveUrl ? 'rgba(16,185,129,0.2)' : 'rgba(59,130,246,0.2)'};">
+                    ${project.liveUrl 
+                        ? `<div style="display: flex; align-items: center; gap: 12px;">
+                            <span style="color: #10b981; font-size: 1.2rem;">●</span>
+                            <div>
+                                <div style="font-weight: 600; color: #10b981;">Live & Available</div>
+                                <a href="${project.liveUrl}" target="_blank" style="color: var(--accent); text-decoration: none;">${project.liveUrl} →</a>
+                            </div>
+                          </div>`
+                        : `<div style="display: flex; align-items: center; gap: 12px;">
+                            <span style="color: var(--accent); font-size: 1.2rem;">◐</span>
+                            <div>
+                                <div style="font-weight: 600; color: var(--text-primary);">In Development</div>
+                                <div style="color: var(--text-secondary);">Expected: ${project.expectedLaunch || 'TBD'}</div>
+                            </div>
+                          </div>`
+                    }
+                </div>
+
                 <!-- Get Involved -->
                 <div class="get-involved">
                     <h3 class="get-involved-title">🚀 Get Involved</h3>
                     <div class="involved-links">
-                        <a href="${project.github}" class="involved-link">→ Contribute on GitHub</a>
-                        <a href="mailto:${project.earlyAccess}" class="involved-link">→ Request Early Access</a>
-                        <a href="${project.hire}" class="involved-link">→ Hire Lucas (Upwork)</a>
+                        ${project.liveUrl ? `<a href="${project.liveUrl}" class="involved-link" target="_blank">→ Try it Live</a>` : ''}
+                        ${project.github ? `<a href="${project.github}" class="involved-link" target="_blank">→ View on GitHub</a>` : ''}
+                        ${project.earlyAccess ? `<a href="mailto:${project.earlyAccess}" class="involved-link">→ Request Early Access</a>` : ''}
+                        <a href="${project.hire}" class="involved-link" target="_blank">→ Hire Lucas (Upwork)</a>
                     </div>
                 </div>
             `;
