@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Bhatia — Building in Public</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode.js/1.5.3/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #2a2a2a;
+            --accent: #3B82F6;
+            --accent-hover: #2563EB;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-tertiary: #686868;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --border: rgba(255, 255, 255, 0.1);
+            --gradient: linear-gradient(135deg, #3B82F6 0%, #8b5cf6 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 60px 0 40px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        .header-text p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 500px;
+            animation: slideDown 0.6s ease-out 0.1s both;
+        }
+
+        .qr-container {
+            width: 120px;
+            height: 120px;
+            background: white;
+            padding: 8px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+            animation: slideDown 0.6s ease-out 0.2s both;
+        }
+
+        #qrcode {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 60px 0;
+            animation: fadeIn 0.8s ease-out 0.3s both;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Projects Grid */
+        .projects-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        /* Project Card */
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 64px rgba(59, 130, 246, 0.2);
+        }
+
+        .project-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .project-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .status-beta {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+
+        .status-building {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .status-active {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Progress Bar */
+        .progress-section {
+            margin-bottom: 20px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .progress-percentage {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--bg-tertiary);
+            border-radius: 3px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 3px;
+            animation: growWidth 1.2s ease-out;
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-badge {
+            padding: 4px 10px;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #60a5fa;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .tech-badge:hover {
+            background: rgba(59, 130, 246, 0.25);
+            border-color: var(--accent);
+        }
+
+        /* Project Stats */
+        .project-stats {
+            display: flex;
+            gap: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .stat-item {
+            flex: 1;
+            text-align: center;
+        }
+
+        .stat-item-value {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .stat-item-label {
+            color: var(--text-tertiary);
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        /* CTA Buttons */
+        .project-cta {
+            display: flex;
+            gap: 8px;
+            padding-top: 16px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            border: 1px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-color: var(--accent);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Roadmap */
+        .roadmap {
+            margin: 40px 0;
+        }
+
+        .roadmap-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+            opacity: 0.3;
+        }
+
+        .milestone {
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 24px;
+        }
+
+        .milestone::before {
+            content: '';
+            position: absolute;
+            left: -47px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            background: var(--bg-primary);
+        }
+
+        .milestone.completed::before {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .milestone.in-progress::before {
+            background: var(--warning);
+            border-color: var(--warning);
+            animation: pulse 2s infinite;
+        }
+
+        .milestone-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .milestone-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .milestone-date {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+
+        /* Changelog */
+        .changelog {
+            margin: 40px 0;
+        }
+
+        .changelog-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .changelog-items {
+            space-y: 12px;
+        }
+
+        .changelog-item {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .changelog-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateX(4px);
+        }
+
+        .changelog-date {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .changelog-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Distribution */
+        .distribution {
+            margin: 40px 0;
+        }
+
+        .distribution-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .distribution-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .distribution-item {
+            padding: 8px 16px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* Get Involved */
+        .get-involved {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .get-involved-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .involved-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .involved-link {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .involved-link:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 0 40px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+            display: inline-block;
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #60a5fa;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes growWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 6px rgba(245, 158, 11, 0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: start;
+            }
+
+            .qr-container {
+                width: 100px;
+                height: 100px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .modal-content {
+                padding: 24px;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Lucas Bhatia — Building in Public</h1>
+                    <p>5 ambitious projects. 1 developer. AI agents managing the chaos. See what's shipping, what's next, and how to get involved.</p>
+                </div>
+                <div class="qr-container">
+                    <div id="qrcode"></div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Active Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">76%</div>
+                    <div class="stat-label">Avg Completion</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">AI Agents</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Daily</div>
+                    <div class="stat-label">Update Cycle</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Projects -->
+    <section class="projects-section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Modal for Project Details -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content" id="modalContent">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <!-- Content populated by JS -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Lucas Bhatia</h3>
+                    <div class="footer-links">
+                        <a href="https://github.com/lucasbhatia" class="footer-link">GitHub</a>
+                        <a href="https://linkedin.com/in/lucasbhatia" class="footer-link">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Get in Touch</h3>
+                    <div class="footer-links">
+                        <a href="mailto:lucas@example.com" class="footer-link">Email</a>
+                        <a href="https://upwork.com/fl/lucasbhatia" class="footer-link">Upwork</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Resume</a>
+                        <a href="#" class="footer-link">Blog</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>
+                    <span class="ai-badge">🤖 Built with AI Agents</span>
+                </div>
+                <div id="lastUpdated">Last updated: Feb 16, 2026</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Project Data
+        const projects = [
+            {
+                id: 1,
+                title: 'IOSTrade',
+                subtitle: 'Algorithmic Trading Platform',
+                status: 'Beta (Paper Trading)',
+                statusClass: 'status-beta',
+                progress: 78,
+                description: '7 strategies live with ML signals. Paper trading on iOS and desktop.',
+                tech: ['Python', 'Railway', 'Alpaca API', 'SwiftUI', 'ML'],
+                stats: [
+                    { label: 'Strategies', value: '7' },
+                    { label: 'Tests', value: '150+' },
+                    { label: 'Users', value: 'Beta' }
+                ],
+                done: [
+                    '7 strategies live',
+                    'Risk management system',
+                    'iOS app with real-time sync',
+                    'ML signal generation',
+                    'Performance dashboard'
+                ],
+                next: [
+                    'Live trading with real capital',
+                    'More advanced strategies',
+                    'Mobile push alerts',
+                    'Strategy backtesting engine'
+                ],
+                team: '1 dev + AI agents',
+                roadmap: [
+                    { title: 'MVP Complete', date: 'Jan 15, 2026', completed: true, description: 'All 7 base strategies deployed' },
+                    { title: 'Paper Trading', date: 'Feb 1, 2026', completed: true, description: 'Full trading simulation live' },
+                    { title: 'iOS App Beta', date: 'Feb 10, 2026', completed: true, description: 'Testflight public beta released' },
+                    { title: 'Live Trading', date: 'Mar 2026', completed: false, inProgress: true, description: 'Alpaca live account integration' },
+                    { title: 'Strategy Store', date: 'Apr 2026', completed: false, description: 'Community strategies marketplace' }
+                ],
+                changelog: [
+                    { date: 'Feb 16', text: 'Added 7 strategy performance cards to dashboard' },
+                    { date: 'Feb 15', text: 'Fixed iOS sync lag, now <500ms' },
+                    { date: 'Feb 14', text: 'Deployed momentum strategy v2' },
+                    { date: 'Feb 12', text: 'Added MACD and RSI signals' },
+                    { date: 'Feb 10', text: 'iOS app beta released on TestFlight' }
+                ],
+                distribution: ['iOS App Store', 'Desktop (Web/Electron)', 'Railway'],
+                github: 'https://github.com/lucasbhatia/iostrade',
+                earlyAccess: 'lucas@iostrade.dev',
+                hire: 'https://upwork.com/fl/lucasbhatia'
+            },
+            {
+                id: 2,
+                title: 'SlipEdge',
+                subtitle: 'Sports Betting Analytics',
+                status: 'Beta',
+                statusClass: 'status-beta',
+                progress: 72,
+                description: 'Bloomberg-style betting analytics. Odds pipeline + mobile app with 98 unit tests.',
+                tech: ['Next.js', 'Supabase', 'SwiftUI', 'Tailwind', 'TypeScript'],
+                stats: [
+                    { label: 'Sportsbooks', value: '12+' },
+                    { label: 'Tests', value: '98' },
+                    { label: 'Coverage', value: '94%' }
+                ],
+                done: [
+                    'Web dashboard (Bloomberg-style UI)',
+                    'iOS app with real-time odds',
+                    'Odds pipeline ingesting 12+ books',
+                    '98 comprehensive unit tests',
+                    'Advanced analytics (ROI, sharpe, etc)'
+                ],
+                next: [
+                    'App Store launch (prod)',
+                    'Social features (bet sharing)',
+                    'Premium tier with API',
+                    'Android app'
+                ],
+                team: '1 dev + AI agents',
+                roadmap: [
+                    { title: 'Web MVP', date: 'Dec 2025', completed: true, description: 'Dashboard with odds comparison' },
+                    { title: 'iOS Alpha', date: 'Jan 15, 2026', completed: true, description: 'First internal beta' },
+                    { title: 'Odds Pipeline', date: 'Feb 1, 2026', completed: true, description: '12 sportsbooks integrated' },
+                    { title: 'iOS Beta', date: 'Feb 10, 2026', completed: true, description: 'TestFlight external beta' },
+                    { title: 'App Store Launch', date: 'Mar 2026', completed: false, inProgress: true, description: 'Production release' },
+                    { title: 'Premium API', date: 'Apr 2026', completed: false, description: 'Monetization layer' }
+                ],
+                changelog: [
+                    { date: 'Feb 16', text: 'Fixed odds pipeline sync, now 99.8% uptime' },
+                    { date: 'Feb 15', text: 'Added live odds comparison matrix' },
+                    { date: 'Feb 14', text: 'Deployed ROI calculator' },
+                    { date: 'Feb 13', text: 'Added iOS offline mode' },
+                    { date: 'Feb 10', text: 'Beta app released to TestFlight' }
+                ],
+                distribution: ['iOS App Store', 'Web (Vercel)', 'API'],
+                github: 'https://github.com/lucasbhatia/slipedge',
+                earlyAccess: 'lucas@slipedge.dev',
+                hire: 'https://upwork.com/fl/lucasbhatia'
+            },
+            {
+                id: 3,
+                title: 'CB Service Broker',
+                subtitle: 'Customs Brokerage Portal',
+                status: 'Beta',
+                statusClass: 'status-beta',
+                progress: 85,
+                description: 'Enterprise customs portal. Shipment tracking, document exchange, OFAC screening, and Stripe payments.',
+                tech: ['Next.js', 'Supabase', 'Stripe', 'Python', 'AWS'],
+                stats: [
+                    { label: 'Shipments', value: '500+' },
+                    { label: 'Clients', value: '20+' },
+                    { label: 'Uptime', value: '99.9%' }
+                ],
+                done: [
+                    'Real-time shipment tracking',
+                    'Document exchange system',
+                    'OFAC screening integration',
+                    'Stripe payments & invoicing',
+                    'Client analytics dashboard'
+                ],
+                next: [
+                    'Production deployment',
+                    'Email notification system',
+                    'Client onboarding flow',
+                    'Multi-currency support'
+                ],
+                team: '1 dev + AI agents',
+                roadmap: [
+                    { title: 'Core Features', date: 'Jan 2026', completed: true, description: 'Tracking, docs, payments' },
+                    { title: 'OFAC Integration', date: 'Feb 5, 2026', completed: true, description: 'Compliance screening' },
+                    { title: 'Analytics', date: 'Feb 10, 2026', completed: true, description: 'Dashboard with KPIs' },
+                    { title: 'Production Deploy', date: 'Mar 2026', completed: false, inProgress: true, description: 'Live with real clients' },
+                    { title: 'Mobile App', date: 'Apr 2026', completed: false, description: 'iOS/Android' }
+                ],
+                changelog: [
+                    { date: 'Feb 16', text: 'Added document auto-tagging with AI' },
+                    { date: 'Feb 15', text: 'OFAC screening now supports 50k+ entities' },
+                    { date: 'Feb 14', text: 'Stripe integration tested with live charges' },
+                    { date: 'Feb 12', text: 'Deployed shipment timeline view' },
+                    { date: 'Feb 10', text: 'Analytics dashboard live' }
+                ],
+                distribution: ['Web (Vercel)', 'API', 'AWS'],
+                github: 'https://github.com/lucasbhatia/cb-broker',
+                earlyAccess: 'lucas@cbbroker.dev',
+                hire: 'https://upwork.com/fl/lucasbhatia'
+            },
+            {
+                id: 4,
+                title: 'StudyBot',
+                subtitle: 'AI Study Tool',
+                status: 'Building MVP',
+                statusClass: 'status-building',
+                progress: 15,
+                description: 'Chrome extension for Canvas integration. AI-powered study assistant coming soon.',
+                tech: ['Chrome Extension', 'Next.js', 'Canvas API', 'OpenAI', 'TailwindCSS'],
+                stats: [
+                    { label: 'Stage', value: 'MVP' },
+                    { label: 'Users', value: 'Waitlist' },
+                    { label: 'ETA', value: 'Q1 2026' }
+                ],
+                done: [
+                    'Research complete',
+                    'Extension architecture designed',
+                    'Canvas API integration planned'
+                ],
+                next: [
+                    'Chrome extension MVP',
+                    'Web dashboard',
+                    'Canvas assignment sync',
+                    'AI study generation',
+                    'Chrome Web Store launch'
+                ],
+                team: '1 dev + AI agents',
+                roadmap: [
+                    { title: 'Research Phase', date: 'Feb 2026', completed: true, description: 'Validated Canvas API, user interviews' },
+                    { title: 'Extension MVP', date: 'Mar 2026', completed: false, inProgress: true, description: 'Basic Chrome extension' },
+                    { title: 'Dashboard', date: 'Apr 2026', completed: false, description: 'Web dashboard v1' },
+                    { title: 'Web Store Launch', date: 'May 2026', completed: false, description: 'Chrome Web Store listing' },
+                    { title: 'Monetization', date: 'Jun 2026', completed: false, description: 'Premium tier' }
+                ],
+                changelog: [
+                    { date: 'Feb 16', text: 'Architecture whiteboard complete' },
+                    { date: 'Feb 14', text: 'Canvas API endpoints tested' },
+                    { date: 'Feb 12', text: 'User research: 50 students interviewed' },
+                    { date: 'Feb 10', text: 'Project kickoff' }
+                ],
+                distribution: ['Chrome Web Store', 'Web (Vercel)'],
+                github: 'https://github.com/lucasbhatia/studybot',
+                earlyAccess: 'lucas@studybot.dev',
+                hire: 'https://upwork.com/fl/lucasbhatia'
+            },
+            {
+                id: 5,
+                title: 'AI Agent Orchestration',
+                subtitle: 'Multi-Agent System',
+                status: 'Active / Daily Use',
+                statusClass: 'status-active',
+                progress: 90,
+                description: 'OpenClaw-powered system managing 4+ projects autonomously. Agents, automation, orchestration.',
+                tech: ['OpenClaw', 'Python', 'TypeScript', 'Node.js', 'Redis'],
+                stats: [
+                    { label: 'Projects', value: '5' },
+                    { label: 'Agents', value: '∞' },
+                    { label: 'Uptime', value: '100%' }
+                ],
+                done: [
+                    'Multi-agent architecture',
+                    'OpenClaw integration',
+                    'Python + TypeScript agents',
+                    'Cross-project automation',
+                    'Logging & monitoring'
+                ],
+                next: [
+                    'Open-source core components',
+                    'Agent framework documentation',
+                    'Public GitHub repository',
+                    'Community agents marketplace'
+                ],
+                team: '1 dev (solo)',
+                roadmap: [
+                    { title: 'Core Architecture', date: 'Jan 2026', completed: true, description: 'Multi-agent orchestration' },
+                    { title: 'OpenClaw Integration', date: 'Jan 20, 2026', completed: true, description: 'Full integration' },
+                    { title: 'Automation Layer', date: 'Feb 5, 2026', completed: true, description: '50+ automations live' },
+                    { title: 'Open Source', date: 'Mar 2026', completed: false, inProgress: true, description: 'GitHub repo public' },
+                    { title: 'Community Agents', date: 'Apr 2026', completed: false, description: 'Marketplace' }
+                ],
+                changelog: [
+                    { date: 'Feb 16', text: 'Deployed agent orchestration dashboard' },
+                    { date: 'Feb 15', text: 'Added cross-project task queue' },
+                    { date: 'Feb 14', text: '50 automations now live' },
+                    { date: 'Feb 12', text: 'OpenClaw integration complete' },
+                    { date: 'Feb 10', text: 'Core architecture deployed' }
+                ],
+                distribution: ['GitHub (Open Source)', 'npm', 'PyPI'],
+                github: 'https://github.com/lucasbhatia/agent-orchestration',
+                earlyAccess: 'lucas@agents.dev',
+                hire: 'https://upwork.com/fl/lucasbhatia'
+            }
+        ];
+
+        // Initialize Projects
+        function initProjects() {
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = projects.map(project => `
+                <div class="project-card" onclick="openModal(${project.id})">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">${project.title}</h3>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 12px;">${project.subtitle}</p>
+                            </div>
+                            <span class="project-status ${project.statusClass}">${project.status}</span>
+                        </div>
+                        
+                        <p class="project-description">${project.description}</p>
+                        
+                        <div class="progress-section">
+                            <div class="progress-label">
+                                <span>Progress</span>
+                                <span class="progress-percentage">${project.progress}%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${project.progress}%"></div>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            ${project.tech.map(t => `<div class="tech-badge">${t}</div>`).join('')}
+                        </div>
+
+                        <div class="project-stats">
+                            ${project.stats.map(s => `
+                                <div class="stat-item">
+                                    <div class="stat-item-value">${s.value}</div>
+                                    <div class="stat-item-label">${s.label}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="project-cta">
+                        <button class="btn btn-secondary" onclick="event.stopPropagation(); window.open('${project.github}')">View Code</button>
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); openModal(${project.id})">Learn More</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Modal Functions
+        function openModal(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            const modal = document.getElementById('projectModal');
+            const content = document.getElementById('modalContent');
+
+            content.innerHTML = `
+                <button class="modal-close" onclick="closeModal()">×</button>
+                
+                <h2 class="modal-title">${project.title}</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.1rem;">${project.subtitle}</p>
+
+                <!-- Tech Stack -->
+                <div style="margin-bottom: 32px;">
+                    <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 12px;">Tech Stack</h3>
+                    <div class="tech-stack">
+                        ${project.tech.map(t => `<div class="tech-badge">${t}</div>`).join('')}
+                    </div>
+                </div>
+
+                <!-- What's Done -->
+                <div style="margin-bottom: 32px;">
+                    <h3 class="roadmap-title">✓ What's Done</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        ${project.done.map(item => `
+                            <li style="padding: 8px 0; color: var(--text-secondary); display: flex; gap: 12px;">
+                                <span style="color: var(--success); font-weight: 600;">✓</span>
+                                <span>${item}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+
+                <!-- What's Next -->
+                <div style="margin-bottom: 32px;">
+                    <h3 class="roadmap-title">→ What's Next</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        ${project.next.map(item => `
+                            <li style="padding: 8px 0; color: var(--text-secondary); display: flex; gap: 12px;">
+                                <span style="color: var(--warning); font-weight: 600;">→</span>
+                                <span>${item}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+
+                <!-- Roadmap -->
+                <div class="roadmap">
+                    <h3 class="roadmap-title">📅 Roadmap</h3>
+                    <div class="timeline">
+                        ${project.roadmap.map(milestone => `
+                            <div class="milestone ${milestone.completed ? 'completed' : ''} ${milestone.inProgress ? 'in-progress' : ''}">
+                                <div class="milestone-title">${milestone.title}</div>
+                                <div class="milestone-description">${milestone.description}</div>
+                                <div class="milestone-date">${milestone.date}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Changelog -->
+                <div class="changelog">
+                    <h3 class="changelog-title">📝 Recent Updates</h3>
+                    <div class="changelog-items">
+                        ${project.changelog.map(item => `
+                            <div class="changelog-item">
+                                <div class="changelog-date">${item.date}</div>
+                                <div class="changelog-text">${item.text}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Distribution -->
+                <div class="distribution">
+                    <h3 class="distribution-title">📦 Distribution</h3>
+                    <div class="distribution-list">
+                        ${project.distribution.map(d => `<div class="distribution-item">${d}</div>`).join('')}
+                    </div>
+                </div>
+
+                <!-- Get Involved -->
+                <div class="get-involved">
+                    <h3 class="get-involved-title">🚀 Get Involved</h3>
+                    <div class="involved-links">
+                        <a href="${project.github}" class="involved-link">→ Contribute on GitHub</a>
+                        <a href="mailto:${project.earlyAccess}" class="involved-link">→ Request Early Access</a>
+                        <a href="${project.hire}" class="involved-link">→ Hire Lucas (Upwork)</a>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on background click
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Generate QR Code
+        function generateQR() {
+            const qrElement = document.getElementById('qrcode');
+            qrElement.innerHTML = ''; // Clear
+            new QRCode(qrElement, {
+                text: 'https://lucasbhatia.dev',
+                width: 100,
+                height: 100,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        // Update timestamp
+        function updateTimestamp() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            document.getElementById('lastUpdated').textContent = `Last updated: ${now.toLocaleDateString('en-US', options)}`;
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', function() {
+            initProjects();
+            generateQR();
+            updateTimestamp();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
