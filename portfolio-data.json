@@ -1,13 +1,14 @@
 {
-  "lastUpdated": "2026-02-16T19:00:00Z",
-  "currentlyBuilding": "StudyBot Chrome Extension",
+  "lastUpdated": "2026-02-17T00:00:00Z",
+  "currentlyBuilding": "SlipEdge Production Hardening & IOSTrade Dashboard",
   "recentActivity": [
+    {"date": "Feb 16", "text": "Production hardening — fixed critical bugs across odds pipeline and API routes", "project": "SlipEdge"},
+    {"date": "Feb 16", "text": "Added trade export, dashboard improvements, and structured logging", "project": "IOSTrade"},
+    {"date": "Feb 16", "text": "Fixed holiday trading bug — engine now blocks orders on market holidays", "project": "IOSTrade"},
+    {"date": "Feb 16", "text": "Migrated Canvas auth from OAuth to lightweight token-based system", "project": "StudyBot"},
     {"date": "Feb 16", "text": "Built StudyBot Chrome Extension — flashcards, quizzes, summaries", "project": "StudyBot"},
     {"date": "Feb 16", "text": "Shipped enterprise-grade offline mode for iOS app", "project": "SlipEdge"},
-    {"date": "Feb 16", "text": "Fixed odds pipeline — live data flowing across NBA, NFL, MLB, NHL", "project": "SlipEdge"},
     {"date": "Feb 16", "text": "Deployed 7 optimized trading strategies with tighter risk controls", "project": "IOSTrade"},
-    {"date": "Feb 16", "text": "Added strategy performance cards with 45+ metrics", "project": "IOSTrade"},
-    {"date": "Feb 16", "text": "SEO meta tags, error boundaries, accessibility compliance", "project": "SlipEdge"},
     {"date": "Feb 15", "text": "Bloomberg-style web redesign complete", "project": "SlipEdge"},
     {"date": "Feb 15", "text": "3 SaaS products production-ready on Vercel", "project": "Other"}
   ],
@@ -15,17 +16,17 @@
     "IOSTrade": {
       "status": "Beta",
       "lastUpdate": "Feb 16",
-      "highlights": ["7 strategies live", "90%+ success rate", "$97K paper portfolio"]
+      "highlights": ["7 strategies live", "Dashboard with trade export", "$97K paper portfolio"]
     },
     "SlipEdge": {
       "status": "Beta",
       "lastUpdate": "Feb 16",
-      "highlights": ["Bloomberg-style UI", "98 unit tests", "Live odds pipeline"]
+      "highlights": ["Bloomberg-style UI", "Production-hardened API", "Live odds pipeline"]
     },
     "StudyBot": {
       "status": "Building MVP",
       "lastUpdate": "Feb 16",
-      "highlights": ["Chrome extension built", "Canvas LMS integration", "AI-powered flashcards"]
+      "highlights": ["Chrome extension built", "Token-based Canvas auth", "AI-powered flashcards"]
     },
     "AI Orchestration": {
       "status": "Active",
