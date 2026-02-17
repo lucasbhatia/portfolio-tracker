@@ -538,96 +538,7 @@
             font-size: 0.85rem;
         }
 
-        /* iOS App Showcase */
-        .ios-showcase {
-            margin: 40px 0;
-            padding: 32px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            border: 1px solid var(--border);
-        }
-
-        .ios-showcase-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            text-align: center;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .screenshot-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            margin-top: 32px;
-        }
-
-        .screenshot-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .phone-mockup {
-            position: relative;
-            width: 100%;
-            max-width: 220px;
-            aspect-ratio: 9/19.5;
-            background: #1a1a1a;
-            border-radius: 36px;
-            padding: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
-                        inset 0 0 0 2px rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .phone-mockup:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 16px 48px rgba(59, 130, 246, 0.3),
-                        inset 0 0 0 2px rgba(59, 130, 246, 0.4);
-        }
-
-        .phone-mockup::before {
-            content: '';
-            position: absolute;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 20px;
-            background: #0a0a0a;
-            border-radius: 0 0 16px 16px;
-            z-index: 2;
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            border-radius: 28px;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .phone-screen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .screenshot-caption {
-            text-align: center;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+        
 
         /* Changelog */
         .changelog {
@@ -1047,22 +958,7 @@
                 grid-template-columns: 1fr !important;
             }
 
-            .screenshot-gallery {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
-            }
-
-            .phone-mockup {
-                max-width: 160px;
-            }
-
-            .ios-showcase {
-                padding: 20px;
-            }
-
-            .ios-showcase-title {
-                font-size: 1.2rem;
-            }
+            
         }
     </style>
 </head>
@@ -1250,7 +1146,7 @@
                 status: 'Beta',
                 statusClass: 'status-beta',
                 progress: 72,
-                description: 'Bloomberg-style betting analytics with AI analysis. Full-featured iOS app with live scores, bet tracking, social features, and responsible gambling tools.',
+                description: 'Bloomberg-style sports betting analytics platform with live odds, AI analysis, and bankroll management. Full-stack web app + native iOS.',
                 tech: ['Next.js', 'Supabase', 'SwiftUI', 'Tailwind', 'TypeScript', 'OpenAI'],
                 stats: [
                     { label: 'Sportsbooks', value: '12+' },
@@ -1461,64 +1357,7 @@
                 </div>
 
                 <!-- iOS App Showcase (only for SlipEdge) -->
-                ${project.id === 2 ? `
-                <div class="ios-showcase">
-                    <h3 class="ios-showcase-title">📱 iOS App Features</h3>
-                    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                        Full-featured native iOS app with real-time odds, AI-powered analysis, bet tracking, social features, and responsible gambling tools.
-                    </p>
-                    <div class="screenshot-gallery">
-                        <div class="screenshot-item">
-                            <div class="phone-mockup">
-                                <div class="phone-screen">
-                                    <img src="games-web.jpg" alt="Live Games" loading="lazy">
-                                </div>
-                            </div>
-                            <div class="screenshot-caption">Live Scores</div>
-                        </div>
-                        <div class="screenshot-item">
-                            <div class="phone-mockup">
-                                <div class="phone-screen">
-                                    <img src="ai-analysis-web.jpg" alt="AI Analysis" loading="lazy">
-                                </div>
-                            </div>
-                            <div class="screenshot-caption">AI Analysis</div>
-                        </div>
-                        <div class="screenshot-item">
-                            <div class="phone-mockup">
-                                <div class="phone-screen">
-                                    <img src="my-bets-web.jpg" alt="Bet Tracking" loading="lazy">
-                                </div>
-                            </div>
-                            <div class="screenshot-caption">Bet Tracking</div>
-                        </div>
-                        <div class="screenshot-item">
-                            <div class="phone-mockup">
-                                <div class="phone-screen">
-                                    <img src="social-web.jpg" alt="Social Features" loading="lazy">
-                                </div>
-                            </div>
-                            <div class="screenshot-caption">Social</div>
-                        </div>
-                        <div class="screenshot-item">
-                            <div class="phone-mockup">
-                                <div class="phone-screen">
-                                    <img src="insights-web.jpg" alt="Performance Analytics" loading="lazy">
-                                </div>
-                            </div>
-                            <div class="screenshot-caption">Performance Analytics</div>
-                        </div>
-                        <div class="screenshot-item">
-                            <div class="phone-mockup">
-                                <div class="phone-screen">
-                                    <img src="what-if-web.jpg" alt="What-If Simulator" loading="lazy">
-                                </div>
-                            </div>
-                            <div class="screenshot-caption">What-If Simulator</div>
-                        </div>
-                    </div>
-                </div>
-                ` : ''}
+                
 
                 <!-- What's Done -->
                 <div style="margin-bottom: 32px;">
