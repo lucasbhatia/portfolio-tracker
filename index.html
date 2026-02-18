@@ -905,6 +905,13 @@
             border-color: var(--accent);
         }
 
+        /* Per-project accent colors */
+        .project-card[data-project="IOSTrade"] { border-top: 3px solid #3B82F6; }
+        .project-card[data-project="SlipEdge"] { border-top: 3px solid #10b981; }
+        .project-card[data-project="AgentBoard"] { border-top: 3px solid #8b5cf6; }
+        .project-card[data-project="PDF Splitter Pro"] { border-top: 3px solid #f59e0b; }
+        .project-card[data-project="Email Template Builder"] { border-top: 3px solid #ec4899; }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header-text h1 {
@@ -1002,22 +1009,22 @@
             <!-- Live Status Banner -->
             <div class="live-status-banner" id="statusBanner">
                 <div class="status-dot"></div>
-                <div class="status-text" id="statusText">Currently building: SlipEdge & IOSTrade Production Hardening</div>
+                <div class="status-text" id="statusText">Currently building: AgentBoard, PDF Splitter Pro & Email Template Builder</div>
             </div>
 
             <!-- Stats -->
             <div class="stats">
                 <div class="stat-card">
-                    <div class="stat-number">100+</div>
-                    <div class="stat-label">Team Color Mappings</div>
-                </div>
-                <div class="stat-card">
                     <div class="stat-number">7</div>
                     <div class="stat-label">Trading Strategies</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">95%</div>
-                    <div class="stat-label">StudyBot Complete</div>
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Team Color Mappings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">SaaS Products</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">5</div>
@@ -1082,7 +1089,7 @@
                 <div>
                     <span class="ai-badge">🤖 Built with AI Agents</span>
                 </div>
-                <div id="lastUpdated">Last updated: Feb 16, 2026</div>
+                <div id="lastUpdated">Last updated: Feb 18, 2026</div>
             </div>
         </div>
     </footer>
@@ -1198,160 +1205,161 @@
             },
             {
                 id: 3,
-                title: 'StudyBot',
-                subtitle: 'AI Study Tool',
-                status: 'Ready for Chrome Web Store',
-                statusClass: 'status-beta',
-                progress: 95,
-                description: 'Chrome extension with Canvas LMS integration. AI-powered flashcards and quizzes. Full polish pass complete with error boundaries, cache manager, and dark mode.',
-                tech: ['Chrome Extension', 'Next.js', 'Canvas API', 'OpenAI', 'TailwindCSS'],
+                title: 'AgentBoard',
+                subtitle: 'AI Agent Task Management SaaS',
+                status: 'Live',
+                statusClass: 'status-active',
+                progress: 80,
+                description: 'Task management SaaS purpose-built for AI agent workflows. Real-time updates, Stripe billing, and Row-Level Security for multi-tenant data isolation.',
+                tech: ['Next.js 14', 'Supabase', 'TypeScript', 'Stripe', 'Tailwind', 'RLS'],
                 stats: [
-                    { label: 'Status', value: 'Launch Ready' },
-                    { label: 'Features', value: 'Complete' },
-                    { label: 'ETA', value: 'Q1 2026' }
+                    { label: 'Auth', value: 'RLS' },
+                    { label: 'Billing', value: 'Stripe' },
+                    { label: 'Updates', value: 'Real-time' }
                 ],
                 done: [
-                    'Full Chrome extension built and tested',
-                    'Canvas LMS API integration complete',
-                    'AI-powered flashcard generation',
-                    'Quiz & study mode features',
-                    'Full polish pass complete',
-                    'Error boundaries & fault tolerance',
-                    'Cache manager for offline support',
-                    'Dark mode fully implemented',
-                    'Ready for Chrome Web Store submission'
+                    'Full Next.js 14 app with App Router',
+                    'Supabase auth & Row-Level Security',
+                    'Real-time task board with live updates',
+                    'Stripe subscription billing integration',
+                    'Multi-tenant workspace isolation',
+                    'Agent workflow task templates',
+                    'Drag-and-drop task prioritization',
+                    'Activity feed & audit logging'
                 ],
                 next: [
-                    'Chrome Web Store submission & approval',
-                    'Public launch announcement',
-                    'User feedback integration',
-                    'Premium tier features'
+                    'Team collaboration & shared boards',
+                    'Webhook integrations (Slack, Discord)',
+                    'Advanced analytics dashboard',
+                    'API access for programmatic task creation'
                 ],
                 team: '1 dev + AI agents',
                 roadmap: [
-                    { title: 'Research Phase', date: 'Feb 2026', completed: true, description: 'Validated Canvas API, user interviews' },
-                    { title: 'Extension MVP', date: 'Feb 16, 2026', completed: true, description: 'Chrome extension complete' },
-                    { title: 'Polish Pass', date: 'Feb 17, 2026', completed: true, description: 'Error boundaries, cache, dark mode' },
-                    { title: 'Web Store Launch', date: 'Feb 2026', completed: false, inProgress: true, description: 'Ready for submission' },
-                    { title: 'Monetization', date: 'Mar 2026', completed: false, description: 'Premium tier' }
+                    { title: 'Architecture & Auth', date: 'Jan 2026', completed: true, description: 'Supabase RLS + Next.js 14 foundation' },
+                    { title: 'Core Task Board', date: 'Jan 20, 2026', completed: true, description: 'Real-time drag-and-drop board' },
+                    { title: 'Stripe Billing', date: 'Feb 5, 2026', completed: true, description: 'Subscription plans live' },
+                    { title: 'Agent Workflows', date: 'Feb 15, 2026', completed: true, description: 'AI agent task templates' },
+                    { title: 'Team Features', date: 'Mar 2026', completed: false, inProgress: true, description: 'Shared boards & collaboration' },
+                    { title: 'API & Webhooks', date: 'Apr 2026', completed: false, description: 'Programmatic integrations' }
                 ],
                 changelog: [
-                    { date: 'Feb 17', text: 'Full polish pass — error boundaries, cache manager' },
-                    { date: 'Feb 17', text: 'Dark mode implementation complete' },
-                    { date: 'Feb 16', text: 'Chrome extension feature-complete' },
-                    { date: 'Feb 14', text: 'Canvas API integration finalized' },
-                    { date: 'Feb 12', text: 'User research: 50+ students interviewed' }
+                    { date: 'Feb 18', text: 'Agent workflow templates — pre-built task flows for AI agents' },
+                    { date: 'Feb 15', text: 'Stripe billing integration complete' },
+                    { date: 'Feb 10', text: 'Real-time updates via Supabase subscriptions' },
+                    { date: 'Feb 5', text: 'Row-Level Security policies deployed' },
+                    { date: 'Jan 20', text: 'Core task board MVP with drag-and-drop' }
                 ],
-                distribution: ['Chrome Web Store', 'Web Dashboard'],
-                github: null,
+                distribution: ['Web (Vercel)', 'API'],
+                github: 'https://github.com/lucasbhatia/agentboard',
                 liveUrl: null,
-                expectedLaunch: 'February 2026 (Chrome Web Store)',
-                earlyAccess: 'lucas@studybot.dev',
+                expectedLaunch: 'Live (Beta)',
+                earlyAccess: 'lucasbhatia@icloud.com',
                 hire: 'https://upwork.com/fl/lucasbhatia'
             },
             {
                 id: 4,
-                title: 'Customs Brokerage Portal',
-                subtitle: 'Full-Stack Enterprise Portal',
-                status: 'Development',
-                statusClass: 'status-building',
-                progress: 85,
-                description: 'Full-stack customs brokerage portal with RLS security, OFAC screening, reports module, and dark mode. Enterprise-grade compliance & operations platform.',
-                tech: ['Next.js', 'Supabase', 'PostgreSQL', 'TypeScript', 'RLS', 'TailwindCSS'],
+                title: 'PDF Splitter Pro',
+                subtitle: 'Professional PDF Splitting & Merging SaaS',
+                status: 'Live',
+                statusClass: 'status-active',
+                progress: 90,
+                description: 'Professional PDF splitting and merging SaaS with Stripe subscriptions. Upload, split, merge, and download PDFs with a clean, fast UI deployed on Vercel.',
+                tech: ['Next.js 14', 'TypeScript', 'Tailwind', 'Stripe', 'Vercel', 'pdf-lib'],
                 stats: [
-                    { label: 'Status', value: 'Dev' },
-                    { label: 'Security', value: 'RLS' },
-                    { label: 'Compliance', value: 'OFAC' }
+                    { label: 'Status', value: 'Live' },
+                    { label: 'Billing', value: 'Stripe' },
+                    { label: 'Deploy', value: 'Vercel' }
                 ],
                 done: [
-                    'Full-stack architecture designed',
-                    'Supabase with Row-Level Security (RLS)',
-                    'OFAC screening integration',
-                    'Reports module with data export',
-                    'Dark mode fully implemented',
-                    'User authentication & authorization',
-                    'Database optimization complete',
-                    'API endpoints secured'
+                    'Full Next.js 14 app deployed on Vercel',
+                    'PDF split by page range or individual pages',
+                    'PDF merge — combine multiple files',
+                    'Stripe subscription billing (free & pro tiers)',
+                    'Drag-and-drop file upload with preview',
+                    'Client-side PDF processing for speed',
+                    'Responsive design for mobile & desktop',
+                    'Download queue with batch processing'
                 ],
                 next: [
-                    'Internal beta testing phase',
-                    'Performance optimization & scaling',
-                    'Advanced reporting features',
-                    'Production deployment'
+                    'PDF compression & optimization tools',
+                    'Watermark & header/footer insertion',
+                    'Batch processing for enterprise users',
+                    'API access for developer integrations'
                 ],
                 team: '1 dev + AI agents',
                 roadmap: [
-                    { title: 'Architecture Design', date: 'Jan 2026', completed: true, description: 'Full-stack planning complete' },
-                    { title: 'RLS Security', date: 'Feb 5, 2026', completed: true, description: 'Row-level security implemented' },
-                    { title: 'OFAC Screening', date: 'Feb 12, 2026', completed: true, description: 'Compliance layer added' },
-                    { title: 'Reports Module', date: 'Feb 17, 2026', completed: true, description: 'Advanced reporting complete' },
-                    { title: 'Internal Beta', date: 'Mar 2026', completed: false, inProgress: true, description: 'Stakeholder testing' },
-                    { title: 'Production Launch', date: 'Apr 2026', completed: false, description: 'Live deployment' }
+                    { title: 'Core PDF Engine', date: 'Jan 2026', completed: true, description: 'Split & merge functionality' },
+                    { title: 'Stripe Integration', date: 'Jan 25, 2026', completed: true, description: 'Subscription billing live' },
+                    { title: 'UI Polish', date: 'Feb 8, 2026', completed: true, description: 'Drag-and-drop, previews, responsive' },
+                    { title: 'Production Deploy', date: 'Feb 12, 2026', completed: true, description: 'Live on Vercel' },
+                    { title: 'Advanced Tools', date: 'Mar 2026', completed: false, inProgress: true, description: 'Compression, watermarks, batch' },
+                    { title: 'API Launch', date: 'Apr 2026', completed: false, description: 'Developer API access' }
                 ],
                 changelog: [
-                    { date: 'Feb 17', text: 'Reports module complete — export & analytics' },
-                    { date: 'Feb 16', text: 'Dark mode fully implemented across platform' },
-                    { date: 'Feb 12', text: 'OFAC screening integration complete' },
-                    { date: 'Feb 10', text: 'RLS security layer deployed' },
-                    { date: 'Feb 5', text: 'Database schema & migrations complete' }
+                    { date: 'Feb 18', text: 'Batch download queue for multi-file processing' },
+                    { date: 'Feb 12', text: 'Production deployment on Vercel — live!' },
+                    { date: 'Feb 8', text: 'Drag-and-drop upload with PDF preview' },
+                    { date: 'Jan 25', text: 'Stripe subscription billing integrated' },
+                    { date: 'Jan 20', text: 'Core split & merge engine complete' }
                 ],
-                distribution: ['Internal Platform', 'Web Portal'],
+                distribution: ['Web (Vercel)', 'API (Coming Soon)'],
                 github: null,
-                liveUrl: null,
-                expectedLaunch: 'March 2026 (Beta)',
+                liveUrl: 'https://pdf-splitter-otzdf560c-hub6.vercel.app',
+                expectedLaunch: 'Live',
                 earlyAccess: null,
                 hire: 'https://upwork.com/fl/lucasbhatia'
             },
             {
                 id: 5,
-                title: 'Mission Control',
-                subtitle: 'Agent Orchestration Dashboard',
-                status: 'Live',
-                statusClass: 'status-active',
-                progress: 100,
-                description: 'Internal agent orchestration dashboard. Real-time monitoring, task management, and project orchestration across 5 concurrent projects.',
-                tech: ['Next.js', 'TypeScript', 'WebSocket', 'OpenClaw', 'Redis'],
+                title: 'Email Template Builder',
+                subtitle: 'Drag-and-Drop Email Editor',
+                status: 'Building',
+                statusClass: 'status-building',
+                progress: 70,
+                description: 'Visual drag-and-drop email template editor with a template gallery, live preview, and export to HTML/ZIP. Built for marketers and developers who need beautiful emails fast.',
+                tech: ['Next.js 14', 'React DnD', 'TypeScript', 'Tailwind', 'HTML Export'],
                 stats: [
-                    { label: 'Projects', value: '5' },
-                    { label: 'Status', value: 'Live' },
-                    { label: 'Uptime', value: '100%' }
+                    { label: 'Editor', value: 'Visual' },
+                    { label: 'Export', value: 'HTML/ZIP' },
+                    { label: 'Templates', value: 'Gallery' }
                 ],
                 done: [
-                    'Real-time dashboard UI',
-                    'Task queue management',
-                    'Agent status monitoring',
-                    'Cross-project orchestration',
-                    'Activity feed & logging',
-                    'WebSocket real-time updates',
-                    'Project status indicators',
-                    'Performance metrics & analytics'
+                    'Visual drag-and-drop email editor',
+                    'Component library (text, image, button, divider, spacer)',
+                    'Live preview with responsive toggle (desktop/mobile)',
+                    'Template gallery with starter templates',
+                    'Export to clean HTML & ZIP download',
+                    'Undo/redo with full state history',
+                    'Color picker & typography controls',
+                    'Next.js 14 App Router architecture'
                 ],
                 next: [
-                    'Advanced workflow scheduling',
-                    'Custom agent templates',
-                    'Automation library expansion',
-                    'Team collaboration features'
+                    'Custom component creation',
+                    'Team template sharing & collaboration',
+                    'ESP integrations (Mailchimp, SendGrid)',
+                    'Premium template marketplace'
                 ],
-                team: '1 dev (internal)',
+                team: '1 dev + AI agents',
                 roadmap: [
-                    { title: 'Core Architecture', date: 'Jan 2026', completed: true, description: 'Dashboard foundation' },
-                    { title: 'Live Deployment', date: 'Feb 10, 2026', completed: true, description: 'Dashboard live' },
-                    { title: 'Real-time Updates', date: 'Feb 16, 2026', completed: true, description: 'WebSocket integration' },
-                    { title: 'Enhanced Analytics', date: 'Feb 17, 2026', completed: true, description: 'Stats & metrics live' },
-                    { title: 'Advanced Scheduling', date: 'Mar 2026', completed: false, inProgress: true, description: 'Workflow templates' }
+                    { title: 'Editor Core', date: 'Jan 2026', completed: true, description: 'Drag-and-drop with React DnD' },
+                    { title: 'Component Library', date: 'Jan 28, 2026', completed: true, description: 'Text, image, button, divider, spacer' },
+                    { title: 'Template Gallery', date: 'Feb 10, 2026', completed: true, description: 'Starter templates & gallery UI' },
+                    { title: 'Export Engine', date: 'Feb 16, 2026', completed: true, description: 'HTML & ZIP export' },
+                    { title: 'Custom Components', date: 'Mar 2026', completed: false, inProgress: true, description: 'User-created reusable blocks' },
+                    { title: 'ESP Integrations', date: 'Apr 2026', completed: false, description: 'Mailchimp, SendGrid, etc.' }
                 ],
                 changelog: [
-                    { date: 'Feb 17', text: 'Stats updated — all projects current as of Feb 17' },
-                    { date: 'Feb 17', text: 'Activity feed synchronized across 5 projects' },
-                    { date: 'Feb 16', text: 'Real-time status indicators deployed' },
-                    { date: 'Feb 15', text: 'WebSocket connection optimization' },
-                    { date: 'Feb 10', text: 'Dashboard live & monitoring all projects' }
+                    { date: 'Feb 18', text: 'Template gallery with 10+ starter templates' },
+                    { date: 'Feb 16', text: 'HTML & ZIP export engine complete' },
+                    { date: 'Feb 10', text: 'Live preview with responsive toggle' },
+                    { date: 'Feb 5', text: 'Undo/redo system with full state history' },
+                    { date: 'Jan 28', text: 'Component library — all core blocks done' }
                 ],
-                distribution: ['Internal Dashboard', 'OpenClaw Integration'],
-                github: null,
+                distribution: ['Web (Vercel)', 'GitHub'],
+                github: 'https://github.com/lucasbhatia/email-template-builder',
                 liveUrl: null,
-                expectedLaunch: 'Live',
-                earlyAccess: 'Internal Use',
+                expectedLaunch: 'March 2026',
+                earlyAccess: 'lucasbhatia@icloud.com',
                 hire: 'https://upwork.com/fl/lucasbhatia'
             }
         ];
@@ -1360,7 +1368,7 @@
         function initProjects() {
             const grid = document.getElementById('projectsGrid');
             grid.innerHTML = projects.map(project => `
-                <div class="project-card" onclick="openModal(${project.id})">
+                <div class="project-card" data-project="${project.title}" onclick="openModal(${project.id})">
                     <div class="project-content">
                         <div class="project-header">
                             <div>
@@ -1391,7 +1399,9 @@
                     <div class="project-cta">
                         ${project.liveUrl 
                             ? `<button class="btn btn-secondary" onclick="event.stopPropagation(); window.open('${project.liveUrl}')" style="background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.3); color: #10b981;">🔗 Live Demo</button>`
-                            : `<button class="btn btn-secondary" onclick="event.stopPropagation(); openModal(${project.id})" style="opacity: 0.7;">🗓 Coming Soon</button>`
+                            : project.github
+                                ? `<button class="btn btn-secondary" onclick="event.stopPropagation(); window.open('${project.github}')" style="background: rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.3); color: #a78bfa;">⭐ GitHub</button>`
+                                : `<button class="btn btn-secondary" onclick="event.stopPropagation(); openModal(${project.id})" style="opacity: 0.7;">🗓 Coming Soon</button>`
                         }
                         <button class="btn btn-primary" onclick="event.stopPropagation(); openModal(${project.id})">Learn More</button>
                     </div>
@@ -1510,7 +1520,8 @@
                     <h3 class="get-involved-title">💼 Interested?</h3>
                     <div class="involved-links">
                         ${project.liveUrl ? `<a href="${project.liveUrl}" class="involved-link" target="_blank">→ Try it Live</a>` : ''}
-                        ${!project.liveUrl ? `<a href="mailto:lucasbhatia@icloud.com?subject=Interested in ${project.title} - Notify Me" class="involved-link">→ Notify me when live</a>` : ''}
+                        ${project.github ? `<a href="${project.github}" class="involved-link" target="_blank">→ View on GitHub</a>` : ''}
+                        ${!project.liveUrl && !project.github ? `<a href="mailto:lucasbhatia@icloud.com?subject=Interested in ${project.title} - Notify Me" class="involved-link">→ Notify me when live</a>` : ''}
                         ${project.earlyAccess ? `<a href="mailto:${project.earlyAccess}" class="involved-link">→ Get Early Access</a>` : ''}
                         <a href="mailto:lucasbhatia@icloud.com" class="involved-link">→ Work with Me</a>
                         <a href="https://linkedin.com/in/lucasbhatia" class="involved-link" target="_blank">→ Connect on LinkedIn</a>
