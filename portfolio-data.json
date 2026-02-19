@@ -1,42 +1,36 @@
 {
-  "lastUpdated": "2026-02-18T00:00:00Z",
-  "currentlyBuilding": "SlipEdge API Optimization & IOSTrade Autonomous Trading Engine",
+  "lastUpdated": "2026-02-18T19:00:00Z",
+  "currentlyBuilding": "Slips Betting Platform & IOSTrade Risk Management",
   "recentActivity": [
+    {"date": "Feb 18", "text": "Redesigned app logo — custom interlocking ribbon S matching iOS icon", "project": "SlipEdge"},
+    {"date": "Feb 18", "text": "Improved team logo fallbacks for non-ESPN international leagues", "project": "SlipEdge"},
+    {"date": "Feb 18", "text": "Fixed Apple Sign In redirect flow for web authentication", "project": "SlipEdge"},
+    {"date": "Feb 18", "text": "Comprehensive strategy performance review and risk assessment", "project": "IOSTrade"},
+    {"date": "Feb 18", "text": "Tightened position limits, added global stop-loss, fixed execution guards", "project": "IOSTrade"},
     {"date": "Feb 17", "text": "Optimized API calls with SWR caching and cleaned up line shopping", "project": "SlipEdge"},
     {"date": "Feb 17", "text": "Fixed international team logos and sport normalization across 20+ leagues", "project": "SlipEdge"},
-    {"date": "Feb 17", "text": "Replaced placeholder data with real API-driven player props", "project": "SlipEdge"},
-    {"date": "Feb 17", "text": "Autonomous strategy creation engine with options support", "project": "IOSTrade"},
     {"date": "Feb 17", "text": "Fully autonomous self-managing trading system deployed", "project": "IOSTrade"},
-    {"date": "Feb 17", "text": "Audit completion and comprehensive polish report", "project": "StudyBot"},
     {"date": "Feb 17", "text": "Bloomberg-style web redesign complete — live on Vercel", "project": "SlipEdge"},
-    {"date": "Feb 17", "text": "Full polish pass complete — error boundaries, cache manager, dark mode", "project": "StudyBot"},
-    {"date": "Feb 17", "text": "Reports module complete with OFAC screening & dark mode", "project": "CB Service Broker"},
     {"date": "Feb 16", "text": "iOS build succeeds — production-ready for TestFlight", "project": "SlipEdge"}
   ],
   "projects": {
     "SlipEdge": {
       "status": "Beta",
-      "completion": "94%",
-      "lastUpdate": "Feb 17",
-      "highlights": ["Bloomberg-style UI live", "SWR-optimized API layer", "20+ international leagues supported", "Real player props from API", "Web: slip-edge-web.vercel.app"]
+      "completion": "95%",
+      "lastUpdate": "Feb 18",
+      "highlights": ["Bloomberg-style UI live", "Custom brand identity", "20+ international leagues supported", "Apple Sign In working", "Web: slips.bet"]
     },
     "IOSTrade": {
       "status": "Autonomous Trading",
-      "completion": "90%",
-      "lastUpdate": "Feb 17",
-      "highlights": ["Autonomous strategy creation engine", "Options strategies support", "Self-managing trading system", "7+ strategies live", "Railway deployment"]
+      "completion": "92%",
+      "lastUpdate": "Feb 18",
+      "highlights": ["Comprehensive risk management overhaul", "Global stop-loss protection", "7+ strategies live", "Self-managing trading system", "Railway deployment"]
     },
     "StudyBot": {
       "status": "Ready for Chrome Web Store",
       "completion": "98%",
       "lastUpdate": "Feb 17",
       "highlights": ["Chrome extension complete", "Full audit passed", "Error boundaries", "Dark mode"]
-    },
-    "CB Service Broker": {
-      "status": "Development",
-      "completion": "85%",
-      "lastUpdate": "Feb 17",
-      "highlights": ["RLS security", "OFAC screening", "Reports module", "Dark mode"]
     },
     "Mission Control": {
       "status": "Live",
