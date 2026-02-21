@@ -1,30 +1,30 @@
 {
-  "lastUpdated": "2026-02-19T00:00:00Z",
+  "lastUpdated": "2026-02-20T00:00:00Z",
   "currentlyBuilding": "Slips Betting Platform & IOSTrade Trading Engine",
   "recentActivity": [
+    {"date": "Feb 20", "text": "Built full Tax Center — 7-tab interface with calculator, 1099 reconciliation, quarterly estimates, and export tools", "project": "SlipEdge"},
+    {"date": "Feb 20", "text": "Standardized odds data hooks and documented full API architecture", "project": "SlipEdge"},
+    {"date": "Feb 20", "text": "Risk management overhaul — tighter stop-losses, trailing stops, crypto position caps", "project": "IOSTrade"},
+    {"date": "Feb 20", "text": "Faster signal diagnostics and quicker first rebalance cycle", "project": "IOSTrade"},
     {"date": "Feb 19", "text": "Core experience polish — editable bets, real active edges, player stats explorer", "project": "SlipEdge"},
     {"date": "Feb 19", "text": "Added Stripe integration for Pro subscriptions", "project": "SlipEdge"},
     {"date": "Feb 19", "text": "Fixed 5 critical trading engine bugs — data pipeline, API feeds, symbol formatting", "project": "IOSTrade"},
     {"date": "Feb 19", "text": "Comprehensive UI polish and performance improvements", "project": "StudyBot"},
-    {"date": "Feb 19", "text": "Production readiness updates — security headers, deployment config", "project": "StudyBot"},
     {"date": "Feb 18", "text": "Redesigned app logo — custom interlocking ribbon S matching iOS icon", "project": "SlipEdge"},
-    {"date": "Feb 18", "text": "Fixed Apple Sign In redirect flow for web authentication", "project": "SlipEdge"},
-    {"date": "Feb 18", "text": "Tightened position limits, added global stop-loss, fixed execution guards", "project": "IOSTrade"},
-    {"date": "Feb 17", "text": "Bloomberg-style web redesign complete — live on Vercel", "project": "SlipEdge"},
-    {"date": "Feb 17", "text": "Fully autonomous self-managing trading system deployed", "project": "IOSTrade"}
+    {"date": "Feb 18", "text": "Tightened position limits, added global stop-loss, fixed execution guards", "project": "IOSTrade"}
   ],
   "projects": {
     "SlipEdge": {
       "status": "Beta",
-      "completion": "96%",
-      "lastUpdate": "Feb 19",
-      "highlights": ["Bloomberg-style UI live", "Stripe Pro subscriptions", "Player stats explorer", "20+ international leagues", "Apple Sign In working", "Web: slips.bet"]
+      "completion": "97%",
+      "lastUpdate": "Feb 20",
+      "highlights": ["Bloomberg-style UI live", "Tax Center with 7-tab interface", "Stripe Pro subscriptions", "Player stats explorer", "20+ international leagues", "Web: slips.bet"]
     },
     "IOSTrade": {
       "status": "Autonomous Trading",
-      "completion": "94%",
-      "lastUpdate": "Feb 19",
-      "highlights": ["Critical trading pipeline bugs fixed", "Alpaca API feed fallback", "Global stop-loss protection", "7+ strategies live", "Self-managing trading system"]
+      "completion": "95%",
+      "lastUpdate": "Feb 20",
+      "highlights": ["Risk management hardened — 2% stops, trailing stops", "Alpaca API feed fallback", "Global stop-loss protection", "7+ strategies live", "Self-managing trading system"]
     },
     "StudyBot": {
       "status": "Production Ready",
